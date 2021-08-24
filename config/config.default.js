@@ -23,6 +23,19 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
+  // 允许全部请求
+  config.security = {
+    csrf: {
+      enable: false,
+      ignoreJSON: true,
+    },
+    domainWhiteList: [ '*' ],
+  };
+
+  // html模板插件配置
+  config.view = {
+    mapping: { '.html': 'ejs' },
+  };
   return {
     ...config,
     ...userConfig,
