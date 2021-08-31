@@ -22,6 +22,25 @@ module.exports = appInfo => {
   const userConfig = {
     // myAppName: 'egg',
   };
+  // 数据库配置
+  exports.mysql = {
+    client: {
+      // host
+      host: 'localhost',
+      // 端口号
+      port: '3306',
+      // 用户名
+      user: 'root',
+      // 数据库密码
+      password: '123456',
+      // 数据库名
+      database: 'test',
+    },
+    // 是否加载到app上，默认开启
+    app: true,
+    // 是否加载到agent上，默认关闭
+    agent: false,
+  };
 
   // 允许全部请求
   config.security = {

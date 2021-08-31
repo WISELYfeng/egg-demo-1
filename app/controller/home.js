@@ -5,17 +5,15 @@ const Controller = require('egg').Controller;
 class HomeController extends Controller {
   async index() {
     const { ctx } = this;
-    const { id } = ctx.query;
-    ctx.body = id;
+    // ctx.render默认会去view文件夹寻找index.html,由egg默认约定
+    await ctx.render('index.html', {
+      title: 'egg示例',
+    });
   }
 
   async user() {
     const { ctx } = this;
-    const { name, slogan } = await ctx.service.home.user();
-    ctx.body = {
-      name,
-      slogan,
-    };
+    ctx.body = await ctx.service.home.user();
   }
 
   async add() {
