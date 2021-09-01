@@ -32,12 +32,31 @@ class HomeController extends Controller {
       ctx.body = {
         code: 200,
         msg: '添加成功',
-        data: null,
+        data: result,
       };
     } catch (error) {
       ctx.body = {
         code: 500,
         msg: '添加成功',
+        data: null,
+      };
+    }
+  }
+
+  async editUser() {
+    const { ctx } = this;
+    const { id, name } = ctx.request.body;
+    try {
+      const result = await ctx.service.home.editUser(id, name);
+      ctx.body = {
+        code: 200,
+        msg: '编辑成功',
+        data: result,
+      };
+    } catch (error) {
+      ctx.body = {
+        code: 500,
+        msg: '编辑失败',
         data: null,
       };
     }
