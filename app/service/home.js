@@ -39,6 +39,16 @@ class HomeService extends Service {
       return null;
     }
   }
+
+  async deleteUser(id) {
+    const { app } = this;
+    try {
+      return await app.mysql.delete('list', { id });
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
 }
 
 module.exports = HomeService;
