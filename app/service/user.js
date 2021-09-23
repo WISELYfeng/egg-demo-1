@@ -17,7 +17,7 @@ class UserService extends Service {
   async register(params) {
     const { app } = this;
     try {
-      const result = await app.mysql.inhert('user', params);
+      const result = await app.mysql.insert('user', params);
       return result;
     } catch (e) {
       console.log(e);
