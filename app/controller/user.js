@@ -83,6 +83,21 @@ class UserController extends Controller {
       },
     };
   }
+
+  // 校验token
+  async test() {
+    const { ctx, app } = this;
+    const token = ctx.request.header.authorization;
+    const decode = await app.jwt.verify(token, app.config.jwt.secret);
+
+    ctx.body = {
+      code: 200,
+      message: '获取成功',
+      data: {
+        ...decode,
+      },
+    };
+  }
 }
 
 module.exports = UserController;
